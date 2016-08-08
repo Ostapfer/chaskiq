@@ -73,6 +73,10 @@ module Chaskiq
       redirect_to manage_campaigns_path()
     end
 
+    def direct
+      flash[:notice] = "Email was sent!"
+    end  
+
     def deliver
       find_campaign
       @campaign.send_newsletter

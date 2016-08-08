@@ -34,6 +34,7 @@ Chaskiq::Engine.routes.draw do
         get :preview
         get :premailer_preview
         get :test
+        get :direct
         get :deliver
         get :clone
         get :editor

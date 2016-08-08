@@ -85,12 +85,20 @@ module Chaskiq
       campaign_url = "#{host}/campaigns/#{self.id}"
     end
 
+    def survey_url
+      host = Rails.application.routes.default_url_options[:host]
+      access_code = Survey.first.response_sets.take.access_code
+      survey_url = "#{host}/surveys/#{access_code}/take"
+    end
+
     def apply_premailer(opts={})
       host = Rails.application.routes.default_url_options[:host]
       skip_track_image = opts[:exclude_gif] ? "exclude_gif=true" : nil
-      premailer_url = ["#{host}/manage/campaigns/#{self.id}/premailer_preview", skip_track_image].join("?")
+      premailer_url = ["http://localhost:3000/manage/campaigns/#{self.id}/premailer_preview", skip_track_image].join("?")
       url = URI.parse(premailer_url)
-      self.update_column(:premailer, clean_inline_css(url))
+      return_clean_html = clean_inline_css(url)
+      self.update_column(:premailer, return_clean_html)
+      # self.update_column(:premailer, clean_inline_css(url))
     end
 
     #will remove content blocks text
@@ -108,7 +116,8 @@ module Chaskiq
         campaign_unsubscribe: "#{subscriber_url}/delete",
         campaign_subscribe: "#{campaign_url}/subscribers/new",
         campaign_description: "#{self.description}",
-        track_image_url: track_image
+        track_image_url: track_image,
+        survey_url: survey_url
       }
     end
 
