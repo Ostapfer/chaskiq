@@ -1,0 +1,16 @@
+= render "menu"
+
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox
+        .ibox-title
+          %h5
+            Create new list
+            -#%small Simple login form example
+          .ibox-tools
+
+
+        .ibox-content
+          .row
+            = render partial: "form"
