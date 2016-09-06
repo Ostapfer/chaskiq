@@ -7,7 +7,7 @@ module Chaskiq
     before_filter :find_campaign
 
     def index
-      @attachments = @campaign.attachments.page(params[:page]).per(50)
+      @attachments = @campaign.attachments
       respond_to do |format|
         format.html
         format.json { render json: @attachments }

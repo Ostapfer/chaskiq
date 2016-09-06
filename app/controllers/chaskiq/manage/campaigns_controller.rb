@@ -12,8 +12,6 @@ module Chaskiq
       @q = Chaskiq::Campaign.ransack(params[:q])
       @campaigns = @q.result
       .order("updated_at desc")
-      .page(params[:page])
-      .per(8)
     end
 
     def new
@@ -41,8 +39,7 @@ module Chaskiq
       @metrics = @q.result
       .includes(:trackable)
       .order("chaskiq_metrics.created_at desc")
-      .page(params[:page])
-      .per(8)
+  
     end
 
     def preview

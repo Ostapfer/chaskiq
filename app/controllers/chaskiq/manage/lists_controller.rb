@@ -9,12 +9,11 @@ module Chaskiq
       @q = Chaskiq::List.ransack(params[:q])
       @lists = @q.result
       .page(params[:page])
-      .per(8)
     end
 
     def show
       @list =  Chaskiq::List.find(params[:id])
-      @subscribers = @list.subscribers.page(params[:page]).per(50)
+      @subscribers = @list.subscribers
     end
 
     def new
