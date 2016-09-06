@@ -364,12 +364,12 @@ a,a:hover {
 }
 
 .alert-error{
-  @extend .alert-danger;
+  @extend .alert-danger  !optional;
 
 }
 
 .alert-notice{
-  @extend .alert-info;
+  @extend .alert-info  !optional;
 }
 
 

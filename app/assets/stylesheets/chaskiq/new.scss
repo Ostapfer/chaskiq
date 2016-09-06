@@ -363,15 +363,6 @@ a,a:hover {
   border-radius: 0px !important;
 }
 
-.alert-error{
-  @extend .alert-danger  !optional;
-
-}
-
-.alert-notice{
-  @extend .alert-info  !optional;
-}
-
 
 /* PROJECTS */
 .project-people, .project-actions {
